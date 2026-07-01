@@ -1,0 +1,116 @@
+body{
+    margin: 0;
+    background-color: black;
+    font-family: Arial, sans-serif;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 20px;
+
+    background-color: rgba(255,255,255,0.05);
+    color: aliceblue;
+}
+
+.upload-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+#memoryLabel{
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#memoryInput{
+    padding: 8px 12px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background-color: #222;
+    color: white;
+    outline: none;
+
+    cursor: pointer;
+}
+
+#memoryInput:focus{
+    border-color: #4da6ff;
+    cursor: pointer;
+}
+
+.memory-vault{
+    width: 100%;
+    height: calc(100vh - 80px);
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+    overflow-y: auto;
+}
+
+.card{
+    flex: 0 0 calc((100% - 40px) / 3);
+    /* or width: calc((100% - 40px) / 3); */
+
+    aspect-ratio: 3 / 4;
+
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    box-sizing: border-box;
+
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    background-color: rgba(255,255,255,0.15);
+    cursor: pointer;
+}
+
+.card-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 900px){
+    .card{
+        width: calc((100% - 20px) / 2);
+    }
+}
+
+@media (max-width: 600px){
+    .card{
+        width: 100%;
+    }
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    background-color: rgba(255,255,255,0.15);
+    cursor: pointer;
+}
+
+.card-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:10px;
+}

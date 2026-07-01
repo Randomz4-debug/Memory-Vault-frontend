@@ -1,116 +1,189 @@
 body{
-    margin: 0;
-    background-color: black;
-    font-family: Arial, sans-serif;
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
+/* ================= HEADER ================= */
+
 .container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
 
-    padding: 15px 20px;
+    padding:15px 25px;
 
-    background-color: rgba(255,255,255,0.05);
-    color: aliceblue;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(10px);
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.title-block h1{
+    margin:0;
+    font-size:2rem;
 }
 
 .upload-container{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: auto;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
 }
 
 #memoryLabel{
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
+    font-size:1rem;
+    font-weight:600;
 }
 
 #memoryInput{
-    padding: 8px 12px;
-    border: 1px solid #555;
-    border-radius: 6px;
-    background-color: #222;
-    color: white;
-    outline: none;
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    background:#222;
+    color:white;
+    cursor:pointer;
+}
 
-    cursor: pointer;
+#memoryInput:hover{
+    background:#333;
 }
 
 #memoryInput:focus{
-    border-color: #4da6ff;
-    cursor: pointer;
+    outline:2px solid #4da6ff;
 }
 
+/* ================= GALLERY ================= */
+
 .memory-vault{
-    width: 100%;
-    height: calc(100vh - 80px);
+    width:100%;
+    min-height:calc(100vh - 80px);
 
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    display:grid;
 
-    padding: 20px;
-    box-sizing: border-box;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 
-    overflow-y: auto;
+    gap:20px;
+
+    padding:20px;
+    box-sizing:border-box;
 }
 
 .card{
-    flex: 0 0 calc((100% - 40px) / 3);
-    /* or width: calc((100% - 40px) / 3); */
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:12px;
 
-    aspect-ratio: 3 / 4;
+    overflow:hidden;
 
-    background-color: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 12px;
+    aspect-ratio:3/4;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transition:.25s;
 
-    overflow: hidden;
-    box-sizing: border-box;
-
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .card:hover{
-    transform: translateY(-5px);
-    background-color: rgba(255,255,255,0.15);
-    cursor: pointer;
-}
-
-.card-image{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-@media (max-width: 900px){
-    .card{
-        width: calc((100% - 20px) / 2);
-    }
-}
-
-@media (max-width: 600px){
-    .card{
-        width: 100%;
-    }
-}
-
-.card:hover{
-    transform: translateY(-5px);
-    background-color: rgba(255,255,255,0.15);
-    cursor: pointer;
+    transform:translateY(-8px);
+    background:rgba(255,255,255,.15);
 }
 
 .card-image{
     width:100%;
     height:100%;
     object-fit:cover;
-    border-radius:10px;
+}
+
+/* Videos */
+
+.card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Large Desktop */
+
+@media (min-width:1400px){
+
+    .memory-vault{
+        grid-template-columns:repeat(5,1fr);
+    }
+
+}
+
+/* Desktop */
+
+@media (max-width:1200px){
+
+    .memory-vault{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+}
+
+/* Laptop */
+
+@media (max-width:992px){
+
+    .memory-vault{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .title-block h1{
+        font-size:1.8rem;
+    }
+
+}
+
+/* Tablet */
+
+@media (max-width:768px){
+
+    .container{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .upload-container{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .memory-vault{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width:480px){
+
+    .memory-vault{
+        grid-template-columns:1fr;
+        padding:15px;
+    }
+
+    .title-block h1{
+        font-size:1.4rem;
+    }
+
+    #memoryInput{
+        width:100%;
+    }
+
+    .upload-container{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
 }
